@@ -24,7 +24,7 @@ def update():
     global y
 
 
-    data = pd.read_csv(datafile, header=None)
+    data = pd.read_csv(datafile, header=None, skiprows=1)
 
     curve.setData(data[0], data[1])
 
