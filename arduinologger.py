@@ -2,9 +2,19 @@ import serial
 import subprocess
 import random
 import time
+import os
+
+# finding Arduino-like serial port
+arduino_port = ""
+devs = os.listdir("/dev")
+for d in devs:
+    if "usbmodem" in d: arduino_port = "/dev/"+d
+
+print("Guessing Arduino is on port:",arduino_port)
+
 
 # opening serial port
-ser = serial.Serial('/dev/cu.usbmodem143101', 9600)
+ser = serial.Serial(arduino_port, 9600)
 
 # creating / erasing file
 f = open("loggedlux.txt","w")
